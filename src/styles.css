@@ -123,7 +123,7 @@ h1, h2, h3, p { margin-top: 0; }
 .toolbar-select select { background: transparent; color: #bac6d8; font-size: 11px; border: 0; outline: 0; cursor: pointer; max-width: 160px; }
 .toolbar-select option { background: #152034; }
 .table-header span:first-child { grid-column: span 2; }
-.table-header { display: grid; } grid-template-columns: minmax(0,1fr) 65px 65px 144px 88px; align-items: center; gap: 15px; padding: 13px 24px; border-top: 1px solid #263448; border-bottom: 1px solid #263448; color: #7789a2; font-size: 9px; letter-spacing: .9px; font-weight: 800; }
+ .table-header { display: grid; grid-template-columns: 40px minmax(0,1fr) 65px 65px 144px 88px; align-items: center; gap: 15px; padding: 13px 24px; border-top: 1px solid #263448; border-bottom: 1px solid #263448; color: #7789a2; font-size: 9px; letter-spacing: .9px; font-weight: 800; }
 .repo-row { display: grid; grid-template-columns: 40px minmax(0,1fr) 65px 65px 144px 88px; align-items: center; column-gap: 15px; min-height: 87px; padding: 13px 24px; border-bottom: 1px solid #232f40; }
 .repo-symbol { height: 39px; width: 39px; background: #222b45; border-radius: 10px; color: #a79aff; display: grid; place-items: center; }
 .repo-information { min-width: 0; }
@@ -193,13 +193,13 @@ h1, h2, h3, p { margin-top: 0; }
   .content { padding: 35px 27px; }
   .topbar { padding: 0 27px; }
   .repo-row { grid-template-columns: 35px minmax(0,1fr) 55px 55px 112px 76px; gap: 11px; padding: 12px 18px; }
-  .table-header { grid-template-columns: minmax(0,1fr) 55px 55px 112px 76px; gap: 11px; padding: 13px 18px; }
+   .table-header { grid-template-columns: 35px minmax(0,1fr) 55px 55px 112px 76px; gap: 11px; padding: 13px 18px; }
 }
 @media(max-width:1050px) {
   .metrics { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .dashboard-columns { grid-template-columns: 1fr; }
   .repo-row { grid-template-columns: 35px minmax(0,1fr) 53px 95px 65px; }
-  .table-header { grid-template-columns: minmax(0,1fr) 53px 95px 65px; }
+   .table-header { grid-template-columns: 35px minmax(0,1fr) 53px 95px 65px; }
    .repo-row .repo-numbers:nth-child(4), .table-header span:nth-child(3) { display: none; }
 }
 @media(max-width:800px) {

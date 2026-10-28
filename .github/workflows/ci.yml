@@ -13,17 +13,11 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '22'
-      - run: npm install --no-audit --no-fund
-      - name: Export lockfile for first bootstrap
-        run: |
-          echo BOOTSTRAP_LOCKFILE_START
-          base64 -w 0 package-lock.json
-          echo
-          echo BOOTSTRAP_LOCKFILE_END
+      - run: npm ci --no-audit --no-fund
       - run: npm run typecheck
       - run: npm run test
       - run: npm run build

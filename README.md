@@ -9,7 +9,7 @@ Central de gerenciamento visual dos seus repositórios GitHub.
 Requisitos: Node.js 22.12+ e npm.
 
 ```bash
-npm install
+npm ci
 cp .env.example .env
 npm run dev
 ```
@@ -59,6 +59,6 @@ npm run test
 - Tokens temporários de GitHub são mantidos apenas em memória enquanto o formulário de importação está aberto.
 - Repositórios privados não são persistidos em localStorage. Quando conectado ao Supabase, o estado completo pode ser armazenado no banco do usuário.
 - O frontend não executa commits, exclusões ou operações mutáveis nos repositórios importados.
-- `npm install` cria o `package-lock.json`; faça commit do lockfile antes de mesclar a PR para tornar a instalação determinística.
+- O `package-lock.json` é versionado; utilize `npm ci` para instalações reprodutíveis.
 
 Licença a definir pelo mantenedor.

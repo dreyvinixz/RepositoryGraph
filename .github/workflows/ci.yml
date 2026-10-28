@@ -18,6 +18,12 @@ jobs:
         with:
           node-version: '22'
       - run: npm install --no-audit --no-fund
+      - name: Export lockfile for first bootstrap
+        run: |
+          echo BOOTSTRAP_LOCKFILE_START
+          base64 -w 0 package-lock.json
+          echo
+          echo BOOTSTRAP_LOCKFILE_END
       - run: npm run typecheck
       - run: npm run test
       - run: npm run build

@@ -2,9 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import type { FormEvent } from "react";
 import type { Session } from "@supabase/supabase-js";
 import {
-  Activity, Archive, ArrowDownUp, ArrowRight, CalendarDays, Check, ChevronRight,
+  Activity, ArrowDownUp, ArrowRight, CalendarDays, Check, ChevronRight,
   CircleAlert, Clock3, Code2, ExternalLink, FolderClosed, FolderPlus,
-  GitBranch, GitFork, Github, LayoutDashboard, LoaderCircle, LockKeyhole,
+  GitBranch, GitFork, LayoutDashboard, LoaderCircle, LockKeyhole,
   LogIn, LogOut, Menu, Network, Plus, RefreshCw, Search, ShieldCheck,
   SlidersHorizontal, Star, X,
 } from "lucide-react";
@@ -87,7 +87,7 @@ function ImportDialog({
       <p className="muted modal-description">Conecte a sua conta GitHub e reúna os repositórios em um único espaço de trabalho.</p>
       <form className="form-stack" onSubmit={submit}>
         <label className="field-label" htmlFor="github-username">Usuário GitHub</label>
-        <div className="input-with-icon"><Github size={17} /><input id="github-username" autoFocus required maxLength={39} spellCheck={false} value={username} onChange={e => setUsername(e.target.value)} placeholder="dreyvinixz" /></div>
+        <div className="input-with-icon"><GitBranch size={17} /><input id="github-username" autoFocus required maxLength={39} spellCheck={false} value={username} onChange={e => setUsername(e.target.value)} placeholder="dreyvinixz" /></div>
         <div className="token-heading"><label className="field-label" htmlFor="github-token">Token fine-grained (opcional)</label><span className="subtle-label">Acesso privado</span></div>
         <div className="input-with-icon"><LockKeyhole size={17} /><input id="github-token" autoComplete="off" type={showToken ? "text" : "password"} value={token} onChange={e => setToken(e.target.value)} placeholder="github_pat_..." /><button type="button" className="text-button" onClick={() => setShowToken(s => !s)}>{showToken ? "Ocultar" : "Exibir"}</button></div>
         <div className="security-note"><ShieldCheck size={17} /><p>Para acessar repositórios privados, use um token de permissão mínima, criado para os repositórios desejados (Metadata: Read). Ele não é salvo no navegador nem no Supabase. Sem token, apenas repositórios públicos são importados.</p></div>
@@ -330,7 +330,7 @@ export default function App() {
           <div className="nav-item disabled"><CalendarDays size={18} />Agenda<span className="coming-tag">v0.3</span></div>
           <div className="nav-item disabled"><Network size={18} />Repository Graph<span className="coming-tag">v0.4</span></div>
         </nav>
-        <div className="sidebar-bottom"><div className="sidebar-version"><span className="version-dot" />v0.1.0 · Foundation</div><a href="https://github.com/dreyvinixz/RepositoryGraph" target="_blank" rel="noopener noreferrer" className="sidebar-github"><Github size={17} />Abrir no GitHub<ExternalLink size={13} /></a></div>
+        <div className="sidebar-bottom"><div className="sidebar-version"><span className="version-dot" />v0.1.0 · Foundation</div><a href="https://github.com/dreyvinixz/RepositoryGraph" target="_blank" rel="noopener noreferrer" className="sidebar-github"><GitBranch size={17} />Abrir no GitHub<ExternalLink size={13} /></a></div>
       </aside>
 
       <main className="main-area">
@@ -353,7 +353,7 @@ export default function App() {
             </section>
           </>}
 
-          {repos.length === 0 && <section className="first-run"><div className="first-run-icon"><Github size={33} /></div><h2>Seu espaço de trabalho começa aqui</h2><p>Importe os seus repositórios reais do GitHub para visualizar, pesquisar e organizá-los em coleções personalizadas.</p><button className="button primary" onClick={() => setShowImport(true)}><RefreshCw size={17} />Conectar ao GitHub</button><small>Não é necessário configurar credenciais para repositórios públicos.</small></section>}
+          {repos.length === 0 && <section className="first-run"><div className="first-run-icon"><GitBranch size={33} /></div><h2>Seu espaço de trabalho começa aqui</h2><p>Importe os seus repositórios reais do GitHub para visualizar, pesquisar e organizá-los em coleções personalizadas.</p><button className="button primary" onClick={() => setShowImport(true)}><RefreshCw size={17} />Conectar ao GitHub</button><small>Não é necessário configurar credenciais para repositórios públicos.</small></section>}
 
           {repos.length > 0 && <section className="repos-panel">
             <div className="repos-heading"><div><h2>{view === "dashboard" ? "Seus repositórios" : title}</h2><p>{view === "dashboard" ? "Explore e gerencie seu portfólio" : countLabel(sorted.length) + " repositórios encontrados"}</p></div>{view === "dashboard" && <button className="view-all" onClick={() => navigate("repositories")}>Ver todos <ArrowRight size={16} /></button>}{view === "collection" && activeCollection && <span className="collection-badge" style={{borderColor: activeCollection.color, color: activeCollection.color}}>{activeCollection.repoIds.length} associados</span>}</div>
